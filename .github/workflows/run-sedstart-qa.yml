@@ -1,4 +1,4 @@
-name: Run SedStart Test
+name: Sedstart QA
 
 on:
   workflow_dispatch:
@@ -10,7 +10,7 @@ jobs:
       - name: Trigger SedStart test run
         uses: sedinqa/sedstart@v1
         with:
-          api_key: ${{ secrets.SEDSTART_API_KEY }}
+          api_key: ${{ secrets.SEDSTART_API_KEY_QA }}
           project_id: 270
           test_id: 1186
           profile_id: 330
