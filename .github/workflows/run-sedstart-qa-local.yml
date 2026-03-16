@@ -1,4 +1,4 @@
-name: Sedstart QA
+name: Sedstart QA - Local
 
 on:
   workflow_dispatch:
@@ -7,8 +7,13 @@ jobs:
   sedstart-run:
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/setup-node@v5
+        with:
+          node-version: lts/*
+      - name: Install Playwright Browsers
+        run: npx playwright@1.57.0 install chrome --with-deps
       - name: Trigger SedStart test run
-        uses: sedstart/runcloud@v1
+        uses: sedstart/runlocal@v1
         with:
           api_key: ${{ secrets.SEDSTART_API_KEY_QA }}
           project_id: 479
